@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'inscription</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="">
+        <h4>inscription</h4>
+        <hr>
+        <div class="name-field">
+            <div>
+                <label for="">Nom</label>
+                <input type="text">
+            </div>
+            <div>
+                <label for="">Prénom</label>
+                <input type="text">
+            </div>
+        </div>    
+                <label for="">Adresse Mail</label>
+                <input type="email">
+                <label>Mot de passe</label>
+                <input type="password">
+                <label for="">date du naissance</label>
+                <input type="date">
+                <button onclick="afficherPageWeb()">s'inscrire</button>
+                <script>function afficherPageWeb() {
+                    // Changer l'URL de la page web que vous souhaitez afficher
+                    var urlPageWeb = "http://127.0.0.1:5501/index2.html";
+                    
+                    // Ouvrir la page dans une nouvelle fenêtre
+                    window.open(urlPageWeb, '_blank');}</script>
+                <p>Vous avez déja un compte ? <a href="index2.html">Se connecter</a></p>
+    </form>
+</body>
+</html>
