@@ -1,0 +1,61 @@
+body{
+  background-color: #cfd8da;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ height: 100vh;
+
+
+
+}
+  .box{
+    width: 20px;
+    height: auto;
+    padding: 10px;
+   border-radius: 10px;
+   border-color: aliceblue;
+  }
+  
+  
+  
+  .img{
+    background-color: aliceblue;
+    position: static;
+    max-width: 80%;
+    border-radius: 10px;
+  }
+   
+  .cv{
+    display: flex;
+    flex-direction: column;
+    background-color: #6da4ac;
+    padding: 5px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0,0,0.2);
+    margin-left: 20px;
+  
+  }
+
+  .Expérience{
+    display: flex;
+    flex-direction: column;
+    background-color: #17a2b8;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0,0,0.2);
+    padding: 40px;
+    margin-top: 500px;
+    max-width: 150%;
+  }
+  .Expérience{
+      
+      transform: scale(0.8); /* Réduire la taille de la forme de moitié */
+      margin-bottom: 0px;
+    
+  }
+  hr{
+    
+      border: 1px solid rgb(220, 217, 217);
+  
+    
+  }
