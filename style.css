@@ -121,4 +121,9 @@ p a{
     color: #fff;
     height: 35px;
   }
- 
+  .butun{
+    color: #fff;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
