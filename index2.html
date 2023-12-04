@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <script>
+      document.onmousemove = function(e) {
+        console.log(e);
+
+        let x = e.clientX;
+        let y = e.clientY;
+
+        document.body.style.background = `rgb(${x}, ${y}, ${(x + y) / 10})`;
+    }
+    </script>
     <form action="">
         <h4>Login</h4>
         <hr>
@@ -15,8 +25,14 @@
             <label>Mot de passe</label>
             <input type="password">
               
-            <button><a href="index4.html" class="butun">Login</a></button>
-            
+            <button><a href="index4.html" class="butun"  onclick="gotoLink(this)" value="index4.html">Login</a></button>
+            <script>
+              function gotoLink(link){
+                    console.log(link.value);
+                    location.href = link.value;}
+
+
+            </script>
             <p>Vous oublier le mot se passe ? <a href="index3.html">mot de passe oublier</a></p>
     
     </form>

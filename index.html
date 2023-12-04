@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire d'inscription</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.js">
 </head>
 <body>
     <form action="">
@@ -26,7 +27,27 @@
                 <input type="password">
                 <label for="">date du naissance</label>
                 <input type="date">
-                <button><a href="index2.html" class="butun">s'inscrire</a></button>
+                <button id="mybtn" type="button"  onclick="gotoLink(this)" value="index2.html">Register</button>
+                <input type="button" id="btn" value="change color of background" onclick="changeBackground()">
+                <script>
+                    const mybtn = document.getElementById("mybtn");
+                    mybtn.addEventListener("click",function(e){
+                        console.log("hello , now you are a member");
+                        window.alert("welcom");})
+                    window.alert("hello this my site");
+               
+                    function changeBackground(){
+                        document.body.style.background="#fed604";
+                        
+                    } 
+               
+                 function gotoLink(link){
+                    console.log(link.value);
+                    location.href = link.value;
+                 }
+                   console.log("now we move on to the login page");
+                 
+                 </script>
                 <p>Vous avez déja un compte ? <a href="index2.html">Se connecter</a></p>
     </form>
 </body>

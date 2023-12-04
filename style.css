@@ -127,3 +127,11 @@ p a{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
 }
+#btn{
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  border-radius: 10px;
+  color: #fff;
+  height: 35px;
+  margin-top: 5px;
+}
