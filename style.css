@@ -135,3 +135,11 @@ p a{
   height: 35px;
   margin-top: 5px;
 }
+.submitBtn{
+  margin-top: 15px;
+  background-color: #17a2b8;
+  color:#fff;
+  border: 1px solid #17a2b8;
+  cursor: pointer;
+  border-radius: 10px;
+}

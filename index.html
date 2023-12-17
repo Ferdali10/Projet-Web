@@ -5,50 +5,210 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire d'inscription</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="index.js">
+    <style>
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .success-message {
+            color: rgb(33, 219, 33);
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
-    <form action="">
-        <h4>inscription</h4>
+    <form id="inscriptionForm" action="">
+        <h4>Inscription</h4>
         <hr>
         <div class="name-field">
             <div>
-                <label for="">Nom</label>
-                <input type="text">
+                <label for="name">Nom</label>
+                <input type="text" id="name" onkeyup="validateName()">
+                <span class="error-message" id="nameError"></span>
+                <span class="success-message" id="nameSuccess"></span>
+                <div id="validationMessage"></div>
             </div>
             <div>
-                <label for="">Prénom</label>
-                <input type="text">
+                <label for="Prenom">Prénom</label>
+                <input type="text" id="Prenom" onkeyup="validatePrenom()">
+                <span class="error-message" id="prenomError"></span>
+                <span class="success-message" id="prenomSuccess"></span>
+                <div id="validationMessage1"></div>
             </div>
-        </div>    
-                <label for="">Adresse Mail</label>
-                <input type="email">
-                <label>Mot de passe</label>
-                <input type="password">
-                <label for="">date du naissance</label>
-                <input type="date">
-                <button id="mybtn" type="button"  onclick="gotoLink(this)" value="index2.html">Register</button>
-                <input type="button" id="btn" value="change color of background" onclick="changeBackground()">
-                <script>
-                    const mybtn = document.getElementById("mybtn");
-                    mybtn.addEventListener("click",function(e){
-                        console.log("hello , now you are a member");
-                        window.alert("welcom");})
-                    window.alert("hello this my site");
-               
-                    function changeBackground(){
-                        document.body.style.background="#fed604";
-                        
-                    } 
-               
-                 function gotoLink(link){
-                    console.log(link.value);
-                    location.href = link.value;
-                 }
-                   console.log("now we move on to the login page");
-                 
-                 </script>
-                <p>Vous avez déja un compte ? <a href="index2.html">Se connecter</a></p>
+        </div>
+       
+        <label for="tel">Numéro</label>
+        <input type="tel" id="tel" onkeyup="validateTel()">
+        <span class="error-message" id="telError"></span>
+        <span class="success-message" id="numeroSuccess"></span>
+        <div id="validationMessage2"></div>
+        
+        <label for="email">Adresse Mail</label>
+        <input type="email" id="email" onkeyup="validateEmail()">
+        <span class="error-message" id="emailError"></span>
+        <div id="validationMessage3"></div>
+        
+        <label for="pass1">Mot de passe</label>
+        <input type="password" id="pass1" name="pass1" onkeyup="validatePassword()">
+        <span class="error-message" id="pass1Error"></span>
+        <div id="validationMessage5"></div>
+        <label for="pass2">Confirmer le mot de passe :</label><br>
+        <input type="password" id="pass2" name="pass2" onkeyup="validatePassword()">
+        <span class="error-message" id="pass2Error"></span>
+        <div id="validationMessage6"></div>
+        <label for="birthdate">Date de naissance</label>
+        <input type="date" id="birthdate" onkeyup="validateBirthdate()">
+        <span class="error-message" id="birthdateError"></span>
+        <div id="validationMessage4"></div>
+        
+        <input type="button" id="btn" value="Changer la couleur de fond" onclick="changeBackground()">
+        <button id="mybtn" type="button" onclick="inscrire()">S'inscrire</button>
     </form>
+
+    <script>
+        const inscriptionForm = document.getElementById("inscriptionForm");
+
+        document.getElementById("mybtn").addEventListener("click", function (event) {
+            event.preventDefault(); // Empêche l'envoi du formulaire par défaut
+
+            // Appel des fonctions de validation
+            const isNameValid = validateName();
+            const isPrenomValid = validatePrenom();
+            const isTelValid = validateTel();
+            const isEmailValid = validateEmail();
+            const isPasswordValid = validatePassword();
+            const isBirthdateValid = validateBirthdate();
+
+            // Si toutes les validations sont réussies, effectuez l'inscription
+            if (isNameValid && isPrenomValid && isTelValid && isEmailValid && isPasswordValid && isBirthdateValid) {
+                alert("Inscription réussie !");
+                window.location.href = "index2.html";
+            }
+        });
+
+        function changeBackground() {
+            document.body.style.background = "#fed604";
+        }
+
+        function validateName() {
+            var name = document.getElementById("name").value;
+            var regex = /^[a-zA-Z]{3,}$/;
+            var nameError = document.getElementById("nameError");
+            var validationMessage = document.getElementById("validationMessage");
+
+            if (!regex.test(name)) {
+                validationMessage.innerHTML = '<p class="error-message">Erreur : Le nom doit contenir au moins 3 lettres </p>';
+                return false;
+            } else {
+                validationMessage.innerHTML = '<p class="success-message"> correct.</p>';
+                return true;
+            }
+        }
+
+        function validatePrenom() {
+            var prenom = document.getElementById("Prenom").value;
+            var regex = /^[a-zA-Z]{4,}$/;
+            var validationMessage = document.getElementById("validationMessage1");
+
+            if (!regex.test(prenom)) {
+                validationMessage.innerHTML = '<p class="error-message">Erreur : Le prénom doit contenir au moins 4 lettres </p>';
+                return false;
+            } else {
+                validationMessage.innerHTML = '<p class="success-message"> correct.</p>';
+                return true;
+            }
+        }
+
+        function validateTel() {
+            var tel = document.getElementById("tel").value;
+            var regex = /^[0-9]+$/;
+            var validationMessage = document.getElementById("validationMessage2");
+
+            if (!regex.test(tel)) {
+                validationMessage.innerHTML = '<p class="error-message">Erreur : Le numéro de téléphone ne doit contenir que des chiffres </p>';
+                return false;
+            } else {
+                validationMessage.innerHTML = '<p class="success-message"> correct.</p>';
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            var email = document.getElementById("email").value;
+            var validateEmailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var validationMessage = document.getElementById("validationMessage3");
+
+            if (!validateEmailFormat.test(email)) {
+                validationMessage.innerHTML = '<p class="error-message">Erreur : Adresse e-mail invalide.</p>';
+                return false;
+            } else {
+                validationMessage.innerHTML = '<p class="success-message">Adresse e-mail valide.</p>';
+                return true;
+            }
+        }
+
+        function validatePassword() {
+            var pass1 = document.getElementById("pass1").value;
+            var pass2 = document.getElementById("pass2").value;
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{10,}$/;
+            var pass1Error = document.getElementById("pass1Error");
+            var pass2Error = document.getElementById("pass2Error");
+            var validationMessage5 = document.getElementById("validationMessage5");
+            var validationMessage6 = document.getElementById("validationMessage6");
+            pass1Error.textContent = "";
+            pass2Error.textContent = "";
+            validationMessage5.textContent = "";
+            validationMessage6.textContent = "";
+        
+
+          if (pass1 !== pass2) {
+                pass2Error.textContent = "Les mots de passe ne correspondent pas";
+                return false;
+            } else if (!regex.test(pass1)) {
+                pass1Error.textContent = "Le mot de passe est faible. Il doit contenir au moins 10 caractères, dont au moins une lettre majuscule, une lettre minuscule et un nombre.";
+                validationMessage5.innerHTML = '<p class="error-message">Le mot de passe est faible</p>';
+                return false;
+            }
+             else {
+                validationMessage5.innerHTML = '<p class="success-message">Le mot de passe est correct</p>';
+                validationMessage6.innerHTML = '<p class="success-message">Le mot de passe est excellent</p>';
+                return true;
+            }
+        }
+
+        function validateBirthdate() {
+            var birthdate = document.getElementById("birthdate").value;
+            var validateBirthdateFormat = /^\d{4}-\d{2}-\d{2}$/;
+            var validationMessage = document.getElementById("validationMessage4");
+
+            if (!validateBirthdateFormat.test(birthdate)) {
+                validationMessage.innerHTML = '<p class="error-message">Erreur : Format de date de naissance invalide.</p>';
+                return false;
+            } else {
+                validationMessage.innerHTML = '<p class="success-message"> correct</p>';
+                return true;
+            }
+        }
+
+        function inscrire() {
+            var isNameValid = validateName();
+            var isPrenomValid = validatePrenom();
+            var isTelValid = validateTel();
+            var isEmailValid = validateEmail();
+            var isPasswordValid = validatePassword();
+            var isBirthdateValid = validateBirthdate();
+
+            // Si toutes les validations sont réussies, effectuez l'inscription
+            if (isNameValid && isPrenomValid && isTelValid && isEmailValid && isPasswordValid && isBirthdateValid) {
+                alert("Inscription réussie !");
+            }
+        }
+
+        window.alert("Bonjour, ceci est mon site");
+
+        console.log("Maintenant, nous passons à la page de connexion");
+    </script>
 </body>
 </html>
